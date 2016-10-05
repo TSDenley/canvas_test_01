@@ -14,6 +14,7 @@
     tools = getN('tools'),
     selectedTool = 'pen';
 
+  // Tool radio buttons
   toolForm.addEventListener('click', function () {
     for (var i = 0; i < tools.length; i++) {
       var tool = tools[i];
@@ -24,11 +25,14 @@
   });
 
   // Clear canvas
-  var clearBtn = getID('clear').onclick = function () {
+  var clearCanvas = function () {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
+  var clearBtn = getID('clear').onclick = clearCanvas();
+
   // Draw
+  // Pen tool
   var drawLine = function (e) {
     var x = e.x - this.offsetLeft,
       y = e.y - this.offsetTop;
@@ -37,6 +41,7 @@
     context.stroke();
   };
 
+  // Rectangle tool
   var rect = {
     x: 0,
     y:0,
@@ -50,6 +55,8 @@
 
     rect.w = x - rect.x;
     rect.h = y - rect.y;
+
+    clearCanvas();
 
     context.strokeRect(rect.x, rect.y, rect.w, rect.h);
   };

@@ -13,11 +13,8 @@
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-
-  /**
-  * Draw
-  */
-  var draw = function (e) {
+  // Draw
+  var drawLine = function (e) {
     var x = e.x - this.offsetLeft,
       y = e.y - this.offsetTop;
 
@@ -25,18 +22,41 @@
     context.stroke();
   };
 
+  var rect = {
+    x: 0,
+    y:0,
+    w: 0,
+    h: 0
+  };
+
+  var drawRect = function (e) {
+    var x = e.x - this.offsetLeft,
+      y = e.y - this.offsetTop;
+
+    rect.w = x - rect.x;
+    rect.h = y - rect.y;
+
+    context.fillRect(rect.x, rect.y, rect.w, rect.h);
+  };
+
   canvas.addEventListener('mousedown', function (e) {
     var x = e.x - this.offsetLeft,
       y = e.y - this.offsetTop;
 
-    context.beginPath();
-    context.moveTo(x, y);
-    canvas.addEventListener('mousemove', draw);
+    // context.beginPath();
+    // context.moveTo(x, y);
+    // canvas.addEventListener('mousemove', drawLine);
+
+    rect.x = x;
+    rect.y = y;
+
+    canvas.addEventListener('mousemove', drawRect);
   });
 
   canvas.addEventListener('mouseup', function () {
-    context.closePath();
-    canvas.removeEventListener('mousemove', draw);
+    // context.closePath();
+    // canvas.removeEventListener('mousemove', drawLine);
+    canvas.removeEventListener('mousemove', drawRect);
   });
 
 }());

@@ -29,11 +29,13 @@
     var x = e.x - this.offsetLeft,
       y = e.y - this.offsetTop;
 
+    context.beginPath();
     context.moveTo(x, y);
     canvas.addEventListener('mousemove', draw);
   });
 
   canvas.addEventListener('mouseup', function () {
+    context.closePath();
     canvas.removeEventListener('mousemove', draw);
   });
 

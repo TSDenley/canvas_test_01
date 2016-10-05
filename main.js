@@ -29,7 +29,8 @@
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-  var clearBtn = getID('clear').onclick = clearCanvas();
+  var clearBtn = getID('clear');
+  clearBtn.onclick = clearCanvas;
 
   // Draw
   // Pen tool

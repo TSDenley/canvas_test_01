@@ -51,7 +51,7 @@
     rect.w = x - rect.x;
     rect.h = y - rect.y;
 
-    context.fillRect(rect.x, rect.y, rect.w, rect.h);
+    context.strokeRect(rect.x, rect.y, rect.w, rect.h);
   };
 
 

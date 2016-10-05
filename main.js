@@ -1,12 +1,27 @@
 (function() {
 
-  var getID = function (id) { return document.getElementById(id) };
+  var getID = function (id) { return document.getElementById(id) },
+    getN = function (n) { return document.getElementsByName(n) };
 
   // Canvas
   var canvas = getID('my_canvas'),
     context = canvas.getContext('2d');
     context.lineJoin = context.lineCap = "round";
     context.lineWidth = 5;
+
+  // Controls
+  var toolForm = getID('toolForm'),
+    tools = getN('tools'),
+    selectedTool = 'pen';
+
+  toolForm.addEventListener('click', function () {
+    for (var i = 0; i < tools.length; i++) {
+      var tool = tools[i];
+      if (tool.checked === true) {
+        selectedTool = tool.value;
+      }
+    }
+  });
 
   // Clear canvas
   var clearBtn = getID('clear').onclick = function () {
@@ -39,24 +54,44 @@
     context.fillRect(rect.x, rect.y, rect.w, rect.h);
   };
 
+
+  // Bind mouse events
   canvas.addEventListener('mousedown', function (e) {
     var x = e.x - this.offsetLeft,
       y = e.y - this.offsetTop;
 
-    // context.beginPath();
-    // context.moveTo(x, y);
-    // canvas.addEventListener('mousemove', drawLine);
+    switch (selectedTool) {
+      case 'pen':
+        context.beginPath();
+        context.moveTo(x, y);
 
-    rect.x = x;
-    rect.y = y;
+        canvas.addEventListener('mousemove', drawLine);
+        break;
 
-    canvas.addEventListener('mousemove', drawRect);
+      case 'rectangle':
+        rect.x = x;
+        rect.y = y;
+
+        canvas.addEventListener('mousemove', drawRect);
+        break;
+
+      default:
+        console.error('Unknown tool seleceted: ', selectedTool);
+    }
   });
 
+
   canvas.addEventListener('mouseup', function () {
-    // context.closePath();
-    // canvas.removeEventListener('mousemove', drawLine);
-    canvas.removeEventListener('mousemove', drawRect);
+    switch (selectedTool) {
+      case 'pen':
+        context.closePath();
+        canvas.removeEventListener('mousemove', drawLine);
+        break;
+
+      case 'rectangle':
+        canvas.removeEventListener('mousemove', drawRect);
+        break;
+    }
   });
 
 }());

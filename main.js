@@ -5,8 +5,7 @@
   // Canvas
   var canvas = getID('my_canvas'),
     context = canvas.getContext('2d');
-    context.lineJoin = "round";
-    context.lineCap = "round";
+    context.lineJoin = context.lineCap = "round";
     context.lineWidth = 5;
 
   // Clear canvas

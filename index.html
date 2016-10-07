@@ -11,7 +11,7 @@
   <p>
     <form id="toolForm">
       <fieldset>
-        <legend>Select Tool</legend>
+        <legend>Tools</legend>
 
         <label>Pencil
           <input name="tools" value="pencil" type="radio" checked>
@@ -19,6 +19,15 @@
 
         <label>Rectangle
           <input name="tools" value="rectangle" type="radio">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Stroke options</legend>
+
+        <label>Stroke size:
+          <input id="strokeSize" type="range" min="1" max="20"">
+          <input id="strokeValue" type="number" min="1" max="20" disabled>
         </label>
       </fieldset>
     </form>

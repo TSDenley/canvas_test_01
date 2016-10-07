@@ -12,10 +12,13 @@ body {
 }
 
 fieldset {
-  background-color: #ddd;
   border: 1px solid #ccc;
 }
 
-legend {
-  font-weight: bold;
-}
+  fieldset+fieldset {
+    margin-top: 10px;
+  }
+
+  legend {
+    font-weight: bold;
+  }

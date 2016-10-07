@@ -12,7 +12,15 @@
   // Controls
   var toolForm = getID('toolForm'),
       tools = getN('tools'),
-      selectedTool = 'pencil';
+      selectedTool = 'pencil',
+      strokeSize = getID('strokeSize'),
+      strokeValue = getID('strokeValue'),
+      strokeMin = 1,
+      strokeMax = 30;
+      strokeSize.min = strokeValue.min = strokeMin;
+      strokeSize.max = strokeValue.max = strokeMax;
+      strokeSize.value = strokeValue.value = context.lineWidth;
+
 
   // Tool radio buttons
   toolForm.addEventListener('click', function () {
@@ -24,6 +32,11 @@
     }
   });
 
+  // Set stroke size
+  strokeSize.addEventListener('change', function (e) {
+    context.lineWidth = strokeValue.value = e.target.value;
+  });
+
   // Clear canvas
   var clearCanvas = function () {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -33,7 +46,7 @@
       clearBtn.onclick = clearCanvas;
 
   // Draw
-  // Pen tool
+  // Pencil tool
   var drawLine = function (e) {
     var x = e.x - this.offsetLeft,
         y = e.y - this.offsetTop;

@@ -1,18 +1,18 @@
 (function() {
 
   var getID = function (id) { return document.getElementById(id) },
-    getN = function (n) { return document.getElementsByName(n) };
+      getN = function (n) { return document.getElementsByName(n) };
 
   // Canvas
   var canvas = getID('my_canvas'),
-    context = canvas.getContext('2d');
-    context.lineJoin = context.lineCap = "round";
-    context.lineWidth = 5;
+      context = canvas.getContext('2d');
+      context.lineJoin = context.lineCap = "round";
+      context.lineWidth = 5;
 
   // Controls
   var toolForm = getID('toolForm'),
-    tools = getN('tools'),
-    selectedTool = 'pen';
+      tools = getN('tools'),
+      selectedTool = 'pen';
 
   // Tool radio buttons
   toolForm.addEventListener('click', function () {
@@ -30,7 +30,7 @@
   };
 
   var clearBtn = getID('clear');
-  clearBtn.onclick = clearCanvas;
+      clearBtn.onclick = clearCanvas;
 
   // Draw
   // Pen tool
@@ -52,7 +52,7 @@
 
   var drawRect = function (e) {
     var x = e.x - this.offsetLeft,
-      y = e.y - this.offsetTop;
+        y = e.y - this.offsetTop;
 
     rect.w = x - rect.x;
     rect.h = y - rect.y;
@@ -66,7 +66,7 @@
   // Bind mouse events
   canvas.addEventListener('mousedown', function (e) {
     var x = e.x - this.offsetLeft,
-      y = e.y - this.offsetTop;
+        y = e.y - this.offsetTop;
 
     switch (selectedTool) {
       case 'pen':

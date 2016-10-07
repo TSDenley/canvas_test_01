@@ -15,6 +15,7 @@
       selectedTool = 'pencil',
       strokeSize = getID('strokeSize'),
       strokeValue = getID('strokeValue'),
+      strokeColour = getID('strokeColour'),
       strokeMin = 1,
       strokeMax = 30;
       strokeSize.min = strokeValue.min = strokeMin;
@@ -35,6 +36,11 @@
   // Set stroke size
   strokeSize.addEventListener('change', function (e) {
     context.lineWidth = strokeValue.value = e.target.value;
+  });
+
+  // Set stroke colour
+  strokeColour.addEventListener('change', function (e) {
+    context.strokeStyle = e.target.value;
   });
 
   // Clear canvas

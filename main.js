@@ -64,10 +64,12 @@
 
 
   // Bind mouse events
+  // Start drawing on 'mousedown'
   canvas.addEventListener('mousedown', function (e) {
     var x = e.x - this.offsetLeft,
         y = e.y - this.offsetTop;
 
+    // Bind the relevent function to 'mousemove' for the current tool
     switch (selectedTool) {
       case 'pen':
         context.beginPath();
@@ -89,6 +91,7 @@
   });
 
 
+  // On 'mouseup' unbind the 'mousemove' function to stop drawing
   canvas.addEventListener('mouseup', function () {
     switch (selectedTool) {
       case 'pen':

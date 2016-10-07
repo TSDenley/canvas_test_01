@@ -43,12 +43,7 @@
   };
 
   // Rectangle tool
-  var rect = {
-    x: 0,
-    y:0,
-    w: 0,
-    h: 0
-  };
+  var rect = { x: 0, y:0, w: 0, h: 0 };
 
   var drawRect = function (e) {
     var x = e.x - this.offsetLeft,

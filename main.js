@@ -12,7 +12,7 @@
   // Controls
   var toolForm = getID('toolForm'),
       tools = getN('tools'),
-      selectedTool = 'pen';
+      selectedTool = 'pencil';
 
   // Tool radio buttons
   toolForm.addEventListener('click', function () {
@@ -65,7 +65,7 @@
 
     // Bind the relevent function to 'mousemove' for the current tool
     switch (selectedTool) {
-      case 'pen':
+      case 'pencil':
         context.beginPath();
         context.moveTo(x, y);
 
@@ -88,7 +88,7 @@
   // On 'mouseup' unbind the 'mousemove' function to stop drawing
   canvas.addEventListener('mouseup', function () {
     switch (selectedTool) {
-      case 'pen':
+      case 'pencil':
         context.closePath();
         canvas.removeEventListener('mousemove', drawLine);
         break;

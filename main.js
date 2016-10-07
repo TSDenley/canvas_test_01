@@ -36,8 +36,7 @@
   // Pen tool
   var drawLine = function (e) {
     var x = e.x - this.offsetLeft,
-      y = e.y - this.offsetTop;
-
+        y = e.y - this.offsetTop;
     context.lineTo(x, y);
     context.stroke();
   };

@@ -6,10 +6,12 @@
   // Canvas
   var canvas = getID('my_canvas'),
       context = canvas.getContext('2d');
-      context.lineJoin = context.lineCap = "round";
+      context.lineJoin = context.lineCap = 'round';
       context.lineWidth = 5;
 
-  // Controls
+  /**
+  * Controls
+  */
   var toolForm = getID('toolForm'),
       tools = getN('tools'),
       selectedTool = 'pencil',
@@ -51,7 +53,9 @@
   var clearBtn = getID('clear');
       clearBtn.onclick = clearCanvas;
 
-  // Draw
+  /**
+  * Draw
+  */
   // Pencil tool
   var drawLine = function (e) {
     var x = e.x - this.offsetLeft,
@@ -61,7 +65,7 @@
   };
 
   // Rectangle tool
-  var rect = { x: 0, y:0, w: 0, h: 0 };
+  var rect = { x: 0, y: 0, w: 0, h: 0 };
 
   var drawRect = function (e) {
     var x = e.x - this.offsetLeft,
@@ -70,13 +74,15 @@
     rect.w = x - rect.x;
     rect.h = y - rect.y;
 
-    clearCanvas();
+    // clearCanvas();
 
     context.strokeRect(rect.x, rect.y, rect.w, rect.h);
   };
 
 
-  // Bind mouse events
+  /**
+  * Bind mouse events
+  */
   // Start drawing on 'mousedown'
   canvas.addEventListener('mousedown', function (e) {
     var x = e.x - this.offsetLeft,
